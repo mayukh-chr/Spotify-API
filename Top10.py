@@ -5,7 +5,7 @@ import json
 import requests
 from urllib.parse import urlencode
 
-
+#NOTE: This code is depreciated, I started using Top10_2.py because this code was generating errors with Oauth2.0, and I found it easier to just use spotipy
 load_dotenv()
 client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
