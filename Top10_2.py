@@ -4,9 +4,6 @@ import os
 from dotenv import load_dotenv
 
 
-#
-
-
 load_dotenv()
 client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
@@ -43,21 +40,17 @@ def printPlaylistTracks(playlist_id):
         
         track = item['track']
         album = track['album']
-        artists = track['artists']
-        artist_id = item['track']['album']['artists'][0]['id']
+        artist = album['artists']
+        artists_name = artist[0]['name']
+        artist_id = artist[0]['id']
 
-        
-        
-        
-
-        
-        
-        print("name: ", track['name'])
+        artistGenres(artist_id)
+        print("track name: ", track['name'])
         print("track ID: ", track['id'])
-        print("artist ID: ", album['id'])
+        print("artist ID: ", artist_id)
         
         print("Popularity: ", track['popularity'])
-        #print("artist name: ", artists['name'])                this doesnt work for some reason, gonna check on it later
+        print("artist name: ", artists_name)                #this doesnt work for some reason, gonna check on it later
         print("duration ms: ", track['duration_ms'])
         print("duration s: ", convertmstosec(track['duration_ms']))
         print("release year: ", album["release_date"][0:4])
