@@ -58,7 +58,7 @@ def printPlaylistTracks(playlist_id):
 
         
         #print(f"{idx + 1}. {track['name']} by {track['artists'][0]['name']}")
-        break
+        
         
         
     print()
@@ -79,9 +79,13 @@ def convertmstosec(time):
     return int(result)
 
 def artistGenres(id):
-    result = sp.artist(id)
-    for item in (result['genres']):
-        print(item, end=" ")
+    list = sp.artist(id)['genres']
+    genre = ', '.join(list)
+    print ("genres: ", genre)
+    
+    
+        
+        
 
 def main():
     print("hello from main")
