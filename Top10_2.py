@@ -2,6 +2,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import os
 from dotenv import load_dotenv
+import json
 
 
 load_dotenv()
@@ -34,34 +35,39 @@ def getPlaylistByID(PlaylistID):
 def printPlaylistTracks(playlist_id):
     # Fetch playlist tracks
     results = sp.playlist_tracks(playlist_id)
-    
+    count = 1
+
+
     # Loop through each track and print its name
     for idx, item in enumerate(results['items']):
         
         track = item['track']
-        album = track['album']
         artist = track['artists']
-        artists_name = artist[0]['name']
-        artist_id = artist[0]['id']
 
+        album = track['album']
+        artist = artist[0]['name']
+        song = track['name']
         
-        print("genres: ", ', '.join(sp.artist(artist_id)['genres']))
-        print("track name: ", track['name'])
-        print("track ID: ", track['id'])
-        print("artist ID: ", artist_id)
-        
-        print("Popularity: ", track['popularity'])
-        print("artist name: ", artists_name)                
-        print("duration ms: ", track['duration_ms'])
-        print("duration s: ", convertmstosec(track['duration_ms']))
-        print("release year: ", album["release_date"][0:4])
-        print("release month: ", album["release_date"][5:7])
-        
-        print('------------------------------------------------')
-        
-        
-        #print(f"{idx + 1}. {track['name']} by {track['artists'][0]['name']}")
-        
+        if count == 1:
+            j_album = {f'album {count}':album}
+            j_artist = {f'artist {count}':artist}
+            j_song = {f'song {count}':song}
+        else:
+            j_album[f'album {count}'] = album
+            j_artist[f'artist {count}'] = artist
+            j_song[f'song {count}'] = song
+
+        count += 1
+
+    with (
+        #open('data.json', 'w+') as t,
+        open('album.json', 'w') as al,
+        open('artist.json', 'w') as ar,
+        open('song.json', 'w') as s
+        ):
+        json.dump(j_album, al)
+        json.dump(j_artist, ar)
+        json.dump(j_song, s)
         
         
 
@@ -95,7 +101,7 @@ def main():
 
     #printPlaylistTracks("37i9dQZF1Fa1IIVtEpGUcU")
     printPlaylistTracks("37i9dQZF1Fa1IIVtEpGUcU")
-
+    #print_playlist_tracks_details("37i9dQZF1Fa1IIVtEpGUcU")
 
 if __name__ == "__main__":
 
