@@ -4,7 +4,7 @@ import pandas as pd
 
 #todo: year vs quantity graph
 #       genre vs graph
-df = pd.read_json('album.json')
+df = pd.read_json('album.json') #just to see what information the json has
 print(df)
 
 
