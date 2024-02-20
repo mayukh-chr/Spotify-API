@@ -4,7 +4,9 @@ import os
 from dotenv import load_dotenv
 import json
 
-
+'''todolist
+    1. to write a detailed report on json output of item
+    2. try to make a graph on genre vs count'''
 load_dotenv()
 client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
@@ -103,6 +105,9 @@ def main():
     printPlaylistTracks("37i9dQZF1Fa1IIVtEpGUcU")
     #print_playlist_tracks_details("37i9dQZF1Fa1IIVtEpGUcU")
 
+
+
 if __name__ == "__main__":
 
     main()
+
