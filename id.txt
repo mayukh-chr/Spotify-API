@@ -1,0 +1,56 @@
+- added_at
+- added_by
+  - external_urls
+  - href
+  - id
+  - type
+  - uri
+- is_local
+- primary_color
+- track
+  - preview_url
+  - available_markets
+  - explicit
+  - type
+  - episode
+  - track
+  - album
+    - available_markets
+    - type
+    - album_type
+    - href
+    - id
+    - images
+    - name
+    - release_date
+    - release_date_precision
+    - uri
+    - artists
+      - external_urls
+      - href
+      - id
+      - name
+      - type
+      - uri
+    - external_urls
+    - total_tracks
+  - artists
+    - external_urls
+    - href
+    - id
+    - name
+    - type
+    - uri
+  - disc_number
+  - track_number
+  - duration_ms
+  - external_ids
+  - external_urls
+  - href
+  - id
+  - name
+  - popularity
+  - uri
+  - is_local
+- video_thumbnail
+  - url
