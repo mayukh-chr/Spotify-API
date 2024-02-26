@@ -1,0 +1,151 @@
+Just a series of notes I kept for my own understanding
+
+ok so each track ID, has the following output in a list for a playlist(supposedly):
+    -href
+    -items
+    -limit
+    -next
+    -offset
+    -previous
+    -total
+
+
+1. Href is only 1 item with a URL that has details about the playlist, example link: 
+    https://api.spotify.com/v1/playlists/37i9dQZF1Fa1IIVtEpGUcU/tracks?offset=0&limit=100&additional_types=track
+    infer what you must.
+
+2. items has a massive JSON output in broken in this form. I'm too lazy to write down each key's data type so do it yourself.
+- added_at
+- added_by
+  - external_urls
+  - href
+  - id
+  - type
+  - uri
+- is_local
+- primary_color
+- track
+  - preview_url
+  - available_markets
+  - explicit
+  - type
+  - episode
+  - track
+  - album
+    - available_markets
+    - type
+    - album_type
+    - href
+    - id
+    - images
+    - name
+    - release_date
+    - release_date_precision
+    - uri
+    - artists
+      - external_urls
+      - href
+      - id
+      - name
+      - type
+      - uri
+    - external_urls
+    - total_tracks
+  - artists
+    - external_urls
+    - href
+    - id
+    - name
+    - type
+    - uri
+  - disc_number
+  - track_number
+  - duration_ms
+  - external_ids
+  - external_urls
+  - href
+  - id
+  - name
+  - popularity
+  - uri
+  - is_local
+- video_thumbnail
+  - url
+
+3. Limit
+    returns the count of items, in this case the number of songs in the playlist.
+
+4. next
+    returns none in this case, ig cuz its a playlist ID, and not a song ID, I'll try doing smth 
+
+5. offset
+    returns 0 in this case, again could be because its not a song ID, I think its the % of seeking the song has progressed.
+
+
+6. previous
+    same thing as next
+
+7. total
+    also returns count??
+    could be the count of songs + podcasts episodes as playlists support that idk, haven't tried but should cuz some spotify wrapped have messages from artists.
+
+----------------------------------------------------------------------------------
+
+song details:
+    So in line 28 of module.py, the getTrackDetails method gives info on a track, with this JSON output:
+
+- album
+  - album_type
+  - artists
+    - external_urls
+    - href
+    - id
+    - name
+    - type
+    - uri
+  - available_markets
+  - external_urls
+  - href
+  - id
+  - images
+  - name
+  - release_date
+  - release_date_precision
+  - total_tracks
+  - type
+  - uri
+- artists
+  - external_urls
+  - href
+  - id
+  - name
+  - type
+  - uri
+- available_markets
+- disc_number
+- duration_ms
+- explicit
+- external_ids
+- external_urls
+- href
+- id
+- is_local
+- name
+- popularity
+- preview_url
+- track_number
+- type
+- uri
+
+So we realise that playlist tracks and track by itself have different attributes, therefore are stored seperately in the backend.
+This might be the same for artist and albums.
+
+
+TODO:
+- and infer song details, I should be reading the docs but mai chutiya hu
+- get details on album and artist outputs.
+- implement a search function.
+- graph ka baadme dekhunga sorry nari
+- shift everything to modules.
+- Implement module description
+
