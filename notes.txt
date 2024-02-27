@@ -1,4 +1,5 @@
 Just a series of notes I kept for my own understanding
+https://www.kaggle.com/code/razamh/movie-recommendation-system-using-machine-learning
 
 ok so each track ID, has the following output in a list for a playlist(supposedly):
     -href
